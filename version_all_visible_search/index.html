@@ -2,7 +2,7 @@
 <html lang="he" dir="rtl">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>רקמה אנושית אחת — תמונות מתחלפות</title>
+<title>רקמה אנושית אחת — כל האנשים מוצגים</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap');
 :root {
@@ -19,21 +19,18 @@
 html { scroll-behavior:smooth; }
 body {
   margin:0; min-height:100%; background:var(--paper-blue); color:var(--white);
-  font-family:var(--font); overflow-x:hidden; font-weight:300; padding-bottom:128px;
+  font-family:var(--font); overflow-x:hidden; font-weight:300;
 }
 button,input { font:inherit; color:inherit; }
 button { cursor:pointer; }
 img { max-width:100%; display:block; }
 .rekama-wrap { width:min(100%,1920px); margin-inline:auto; background:var(--paper-blue); }
 .toolbar {
-  position:fixed; left:50%; bottom:max(12px, env(safe-area-inset-bottom)); transform:translateX(-50%);
-  z-index:120; display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:center;
-  width:min(92vw, 860px); padding:14px 16px; border-radius:26px;
-  background:rgba(14,28,58,.82); backdrop-filter:blur(14px); border:1px solid rgba(255,255,255,.10);
-  box-shadow:0 16px 42px rgba(0,0,0,.28);
+  position:sticky; top:0; z-index:80; display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:center;
+  padding:14px 16px; background:rgba(14,28,58,.88); backdrop-filter:blur(10px); border-bottom:1px solid rgba(255,255,255,.09);
 }
 .toolbar input {
-  min-width:min(420px,100%); width:min(420px,100%); border:1px solid rgba(255,255,255,.18);
+  min-width:min(520px,100%); width:min(520px,100%); border:1px solid rgba(255,255,255,.18);
   background:rgba(255,255,255,.09); border-radius:999px; padding:13px 18px; outline:none;
 }
 .toolbar input::placeholder { color:rgba(255,255,255,.72); }
@@ -43,26 +40,25 @@ img { max-width:100%; display:block; }
   transition:background .2s ease,transform .2s ease;
 }
 .tool-btn:hover,.tool-btn:focus-visible { background:rgba(255,255,255,.15); transform:translateY(-1px); outline:none; }
-.tool-btn,.tool-meta { flex:0 0 auto; }
 .tool-meta { font-size:14px; color:rgba(255,255,255,.80); }
 
 .pdf-bg {
   position:relative; isolation:isolate; overflow:hidden;
   background:
     radial-gradient(circle at 18% 45%, rgba(255,255,255,.14), transparent 24%),
-    linear-gradient(90deg, rgba(27,53,102,.50) 0%, rgba(46,66,122,.74) 36%, rgba(46,66,122,.94) 100%),
+    linear-gradient(90deg, rgba(27,53,102,.40) 0%, rgba(46,66,122,.66) 36%, rgba(46,66,122,.90) 100%),
     var(--leaf-landscape) left center / cover no-repeat,
     var(--paper-blue);
 }
 .pdf-bg::before {
   content:""; position:absolute; inset:0; z-index:0;
   background: var(--leaf-landscape) left center / cover no-repeat;
-  opacity:.28; mix-blend-mode:screen; filter:contrast(1.02) brightness(1.00);
+  opacity:.32; mix-blend-mode:screen; filter:contrast(1.03) brightness(1.04);
   pointer-events:none;
 }
 .pdf-bg::after {
   content:""; position:absolute; inset:0; z-index:0;
-  background:linear-gradient(90deg,rgba(11,34,72,.36) 0%, rgba(46,66,122,.22) 42%, rgba(46,66,122,.39) 100%);
+  background:linear-gradient(90deg,rgba(11,34,72,.28) 0%, rgba(46,66,122,.14) 42%, rgba(46,66,122,.31) 100%);
   pointer-events:none;
 }
 .pdf-bg>* { position:relative; z-index:1; }
@@ -95,10 +91,6 @@ img { max-width:100%; display:block; }
 }
 .memory-slot.is-fading .photo-holder,.memory-slot.is-fading .slot-name { opacity:.12; transform:scale(.96); filter:blur(.35px); }
 .memory-slot:focus-visible { outline:3px solid rgba(128,225,245,.95); outline-offset:8px; border-radius:22px; }
-.memory-slot.is-featured{z-index:3;}
-.memory-slot.is-featured .photo-holder{transform:scale(1.17) translateY(-7px);box-shadow:0 0 0 clamp(2px,.16vw,4px) var(--stroke),0 18px 34px rgba(0,0,0,.32), inset -16px 0 28px rgba(255,255,255,.10), inset 18px 0 28px rgba(0,0,0,.10);}
-.memory-slot.is-featured .slot-name{transform:translateY(-4px) scale(1.04);text-shadow:0 2px 12px rgba(0,0,0,.5);}
-.memory-slot .slot-name{transition:opacity .9s ease,transform .9s ease,filter .9s ease;}
 
 .lightbox { position:fixed; inset:0; z-index:999; display:none; place-items:center; padding:22px; }
 .lightbox.is-open { display:grid; }
@@ -146,8 +138,8 @@ img { max-width:100%; display:block; }
   .title-lockup { grid-template-columns:minmax(0,1.06fr) minmax(0,.94fr); gap:5.4%; }
   .poem { font-size:clamp(22px,5.2vw,46px); line-height:1.14; white-space:normal; }
   .main-title { font-size:clamp(46px,11vw,98px); line-height:.84; }
-  .toolbar { justify-content:stretch; width:min(94vw, 640px); bottom:max(10px, env(safe-area-inset-bottom)); padding:12px 12px; }
-  .toolbar input { min-width:100%; width:100%; }
+  .toolbar { justify-content:stretch; }
+  .toolbar input { min-width:100%; }
 }
 @media(max-width:520px) {
   .title-lockup { gap:13px; padding-block:14px; }
@@ -155,26 +147,63 @@ img { max-width:100%; display:block; }
   .main-title { font-size:clamp(40px,10.8vw,58px); }
 }
 
-.fade-poster{height:calc(100svh - 70px);min-height:760px;}
-.fade-hero{position:absolute;top:26.5%;left:4.7%;width:33.8%;text-align:center;}
-.fade-dedication{position:absolute;left:5.4%;top:74%;width:34.2%;}
-.fade-grid{
-  position:absolute;top:17%;right:4.2%;width:47%;
-  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:clamp(24px,2.5vw,44px) 7%;align-items:start;justify-items:center;direction:rtl;
+.all-page{
+  min-height:100vh; padding:clamp(32px,4vw,56px) clamp(18px,3.2vw,42px) clamp(58px,6vw,90px);
+  background:
+    linear-gradient(90deg, rgba(28,54,105,.26), rgba(46,66,122,.72) 42%, rgba(46,66,122,.92)),
+    var(--leaf-landscape) left top / cover no-repeat,
+    var(--paper-blue);
+  background-attachment:fixed;
 }
-.fade-grid .photo-holder{width:clamp(104px,6.35vw,138px);}
-.fade-grid .slot-name{font-size:clamp(12px,.84vw,16px);}
-.empty-search{position:absolute;right:7%;top:48%;width:min(500px,55%);padding:18px;border-radius:18px;background:rgba(255,255,255,.08);text-align:center;display:none;}
+.all-page::before{
+  content:""; position:fixed; inset:0; z-index:0; background:var(--leaf-landscape) left center/cover no-repeat;
+  opacity:.42; filter:contrast(1.05) brightness(1.06); mix-blend-mode:screen; pointer-events:none;
+}
+.all-page::after{
+  content:""; position:fixed; inset:0; z-index:0;
+  background:linear-gradient(90deg, rgba(15,38,76,.12), rgba(46,66,122,.32) 46%, rgba(46,66,122,.56));
+  pointer-events:none;
+}
+.all-page > *{position:relative;z-index:1;}
+.all-hero{width:min(100%,920px);margin:0 auto 30px;text-align:center;}
+.all-intro{width:min(100%,960px);margin:18px auto 30px;text-align:center;font-size:clamp(16px,1.12vw,20px);line-height:1.55;color:rgba(255,255,255,.92);}
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(178px,1fr));gap:24px 18px;align-items:start;}
+.person-card{
+  min-height:250px; border:1px solid rgba(255,255,255,.13); border-radius:28px; padding:18px 13px 16px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.075), rgba(255,255,255,.032)),
+    rgba(22,42,82,.30);
+  box-shadow:0 18px 48px rgba(0,0,0,.20), inset 0 0 0 1px rgba(255,255,255,.045);
+  display:grid; justify-items:center; align-content:start; color:#fff; transition:transform .22s ease, background .22s ease, box-shadow .22s ease;
+}
+.person-card:hover,.person-card:focus-visible{
+  transform:translateY(-4px); background:linear-gradient(180deg, rgba(255,255,255,.105), rgba(255,255,255,.045)), rgba(30,55,104,.36);
+  box-shadow:0 24px 58px rgba(0,0,0,.28), inset 0 0 0 1px rgba(255,255,255,.075); outline:none;
+}
+.person-card .photo-holder{width:clamp(118px,7.4vw,154px);}
+.person-card .slot-name{font-size:clamp(14px,.98vw,18px);max-width:100%;margin-top:17px;}
+.person-place{display:inline-block;margin-top:9px;padding:5px 11px;border-radius:999px;background:rgba(255,255,255,.10);color:rgba(255,255,255,.90);font-size:13px;font-weight:400;}
+.empty-search{display:none;text-align:center;padding:22px;border-radius:18px;background:rgba(255,255,255,.07);color:rgba(255,255,255,.88);width:min(100%,560px);margin:20px auto 0;}
 .empty-search.show{display:block;}
-@media(max-width:1100px){.fade-grid{width:49%;gap:24px 5%;}.fade-grid .photo-holder{width:clamp(98px,8vw,128px);}}
 @media(max-width:860px),(orientation:portrait){
-  .fade-poster{height:auto;min-height:max(100svh,1040px);}
-  .fade-hero{position:relative;top:auto;left:auto;width:min(86%,820px);margin:clamp(32px,5vh,70px) auto 28px;}
-  .fade-grid{position:relative;top:auto;right:auto;width:86%;margin:0 auto;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 12%;}
-  .fade-grid .photo-holder{width:clamp(118px,30vw,190px);}
-  .fade-grid .slot-name{font-size:clamp(14px,3.7vw,22px);}
-  .fade-dedication{position:relative;left:auto;top:auto;width:84%;margin:36px auto 0;font-size:clamp(15px,3.6vw,22px);}
+  .all-page{
+    background:
+      linear-gradient(90deg, rgba(30,56,105,.24), rgba(46,66,122,.78)),
+      var(--leaf-portrait) center top/cover no-repeat,
+      var(--paper-blue);
+  }
+  .all-page::before{background-image:var(--leaf-portrait);background-position:center top;opacity:.42;}
+  .all-hero{width:min(92%,820px);}
+  .cards-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 12px;}
+  .person-card{min-height:220px;border-radius:24px;padding:15px 10px;}
+  .person-card .photo-holder{width:clamp(104px,28vw,158px);}
+  .person-card .slot-name{font-size:clamp(13px,3.75vw,19px);}
+}
+@media(max-width:420px){
+  .cards-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 9px;}
+  .person-card{min-height:200px;padding-inline:8px;}
+  .person-card .photo-holder{width:clamp(94px,27vw,128px);}
+  .person-place{font-size:12px;padding:4px 9px;}
 }
 </style>
 </head>
@@ -182,12 +211,12 @@ img { max-width:100%; display:block; }
 <div class="rekama-wrap">
   <div class="toolbar">
     <input id="searchInput" type="search" placeholder="חיפוש לפי שם או יישוב..." aria-label="חיפוש לפי שם או יישוב">
-    <button id="prevBtn" class="tool-btn" type="button">הקודם</button>
-    <button id="nextBtn" class="tool-btn" type="button">הבא</button>
-    <span id="statusText" class="tool-meta"></span>
+    <button id="prevBtn" class="tool-btn" type="button">למעלה</button>
+    <button id="nextBtn" class="tool-btn" type="button">למטה</button>
+    <span id="countStatus" class="tool-meta"></span>
   </div>
-  <section class="pdf-bg fade-poster" aria-label="רקמה אנושית אחת">
-    <header class="fade-hero">
+  <section class="all-page" aria-label="רקמה אנושית אחת — כל האנשים">
+    <header class="all-hero">
       <span class="rule" aria-hidden="true"></span>
       <div class="title-lockup">
         <p class="poem">וְאִם אֶחָד מֵאִתָּנוּ<br>הוֹלֵךְ מֵעִמָּנוּ<br>מַשֶּׁהוּ מֵת בָּנוּ<br>וּמַשֶּׁהוּ נִשְׁאָר אִתּוֹ.</p>
@@ -195,8 +224,8 @@ img { max-width:100%; display:block; }
       </div>
       <span class="rule" aria-hidden="true"></span>
     </header>
-    <div class="fade-grid" id="posterGrid" aria-label="תמונות מתחלפות של הנופלות והנופלים"></div>
-    <p class="dedication fade-dedication">נזכור בכבוד ובאהבה את כל הנופלות והנופלים,<br>שנפלו בשבעה באוקטובר ובימים שלאחריו,<br>ונישא את זכרם בליבנו כחלק בלתי נפרד מהסיפור שלנו<br>ומהתקווה לעתיד של שלום וביטחון לכולנו.</p>
+    <p class="all-intro">כל הנופלות והנופלים מוצגים יחד, בכרטיסים מעוגלים ועדינים על רקע העלה הכחול. ניתן לחפש לפי שם או יישוב, וללחוץ על כל תמונה לפתיחה מוגדלת.</p>
+    <div class="cards-grid" id="cardsGrid" aria-label="כל הנופלות והנופלים"></div>
     <div id="emptySearch" class="empty-search">לא נמצאו תוצאות לחיפוש הזה.</div>
   </section>
 </div>
@@ -299,243 +328,31 @@ lightboxClose.addEventListener('click', closeLightbox);
 lightbox.addEventListener('click', e => { if (e.target.dataset.close) closeLightbox(); });
 document.addEventListener('keydown', e => { if (e.key === 'Escape' && lightbox.classList.contains('is-open')) closeLightbox(); });
 
-const posterGrid = document.getElementById('posterGrid');
-const statusText = document.getElementById('statusText');
+const cardsGrid = document.getElementById('cardsGrid');
+const countStatus = document.getElementById('countStatus');
 const prevBtn = document.getElementById('prevBtn');
 const nextBtn = document.getElementById('nextBtn');
 const emptySearch = document.getElementById('emptySearch');
-const slotsCount = 6;
-let active = [];
-let cards = [];
-let pageTimer = null;
-let featureTimer = null;
-let batchIndex = 0;
-let featureIndex = 0;
 
-const firstBatchNames = [
-  "אביב ורטהיים ז\"ל",
-  "אביעד אדרי ז\"ל",
-  "איתי ברדיצ'סקי ז\"ל",
-  "איתן זיויק זיו ז\"ל",
-  "אליהו אורגד ז\"ל",
-  "אליצור חג'בי ז\"ל"
-];
-const secondBatchNames = [
-  "אנג'לין אגירה ז\"ל",
-  "ארן גורן ז\"ל",
-  "בלהה אפשטיין ז\"ל",
-  "דורית ורטהיים (כסלו) ז\"ל",
-  "הדר ברדיצ'סקי רוזנפלד ז\"ל",
-  "הלל זלמנוביץ ז\"ל"
-];
-
-function imgMarkup(person) {
-  const src = person.image || (person.galleryImages && person.galleryImages[0]) || '';
-  return src ? `<img src="${escapeHtml(src)}" alt="${escapeHtml(person.name)}" loading="lazy">` : '';
+function makePersonCard(person) {
+  const btn = document.createElement('button');
+  btn.type = 'button';
+  btn.className = 'person-card memory-slot';
+  btn.innerHTML = `<span class="photo-holder">${imgMarkup(person)}</span><span class="slot-name">${person.name}<br><span class="person-place">${person.place || ''}</span></span>`;
+  btn.addEventListener('click', () => openLightbox(person));
+  return btn;
 }
-function matches(person, q) {
-  if (!q) return true;
-  const linkText = (Array.isArray(person.importantLinks) ? person.importantLinks.map(l => l.title).join(' ') : '');
-  return [
-    person.name,
-    person.place,
-    person.role,
-    person.details,
-    person.summary,
-    linkText,
-    person.residence,
-    person.eventPlace,
-    person.burialPlace,
-    person.parents,
-    person.survivedBy,
-    person.memorial,
-    person.matchedTerms
-  ].filter(Boolean).join(' ').includes(q);
-}
-function filteredPeople() {
-  const q = searchInput ? searchInput.value.trim() : '';
-  const seen = new Set();
-  return people.filter(person => {
-    if (!matches(person, q)) return false;
-    const key = person.id || person.name;
-    if (seen.has(key)) return false;
-    seen.add(key);
-    return true;
-  });
-}
-function openLightbox(person) {
-  lightboxImg.innerHTML = imgMarkup(person);
-  lightboxTitle.textContent = person.name;
-  lightboxPlace.textContent = person.details || person.place || '';
-  if (lightboxSummary) lightboxSummary.textContent = person.summary || '';
-  if (lightboxLinks) lightboxLinks.innerHTML = renderImportantLinks(person);
-  if (lightboxGallery) lightboxGallery.innerHTML = renderGalleryThumbs(person);
-  lightbox.classList.add('is-open');
-  lightbox.setAttribute('aria-hidden','false');
-  document.body.style.overflow = 'hidden';
-  lightboxClose.focus();
-}
-function buildCards() {
-  posterGrid.innerHTML = '';
-  cards = [];
-  for (let i=0; i<slotsCount; i++) {
-    const btn = document.createElement('button');
-    btn.type = 'button';
-    btn.className = 'memory-slot';
-    btn.innerHTML = '<span class="photo-holder"></span><span class="slot-name"></span>';
-    posterGrid.appendChild(btn);
-    cards.push(btn);
-  }
-}
-function setCard(card, person) {
-  card.classList.remove('is-featured');
-  if (!person) {
-    card.style.visibility = 'hidden';
-    card.onclick = null;
-    card.dataset.personId = '';
-    return;
-  }
-  card.style.visibility = '';
-  card.dataset.personId = person.id || person.name;
-  card.innerHTML = `<span class="photo-holder">${imgMarkup(person)}</span><span class="slot-name">${person.name}</span>`;
-  card.onclick = () => openLightbox(person);
-}
-function peopleByName(sourceList){
-  const map = new Map();
-  sourceList.forEach(p => map.set(p.name, p));
-  return map;
-}
-function createBatchesFromList(sourceList){
-  const q = searchInput ? searchInput.value.trim() : '';
-  if (q) {
-    const batches = [];
-    for (let i=0; i<sourceList.length; i += slotsCount) batches.push(sourceList.slice(i, i + slotsCount));
-    return batches;
-  }
-  const byName = peopleByName(sourceList);
-  const used = new Set();
-  const batches = [];
-  function takeBatch(nameList){
-    const batch = [];
-    nameList.forEach(name => {
-      const person = byName.get(name);
-      if (person && !used.has(person.name) && batch.length < slotsCount) {
-        batch.push(person);
-        used.add(person.name);
-      }
-    });
-    if (batch.length) batches.push(batch);
-  }
-  takeBatch(firstBatchNames);
-  takeBatch(secondBatchNames);
-
-  const remaining = sourceList.filter(p => !used.has(p.name));
-  const familyCounts = new Map();
-  remaining.forEach(person => {
-    const surname = person.familyName || person.name.split(' ')[0];
-    familyCounts.set(surname, (familyCounts.get(surname) || 0) + 1);
-  });
-  const emittedFamily = new Set();
-  const units = [];
-  remaining.forEach(person => {
-    const surname = person.familyName || person.name.split(' ')[0];
-    const count = familyCounts.get(surname) || 0;
-    if (count > 1) {
-      if (emittedFamily.has(surname)) return;
-      emittedFamily.add(surname);
-      units.push(remaining.filter(p => p.name.split(' ')[0] === surname));
-    } else {
-      units.push([person]);
-    }
-  });
-
-  let current = [];
-  units.forEach(unit => {
-    if (current.length && current.length + unit.length > slotsCount) {
-      batches.push(current);
-      current = [];
-    }
-    if (unit.length > slotsCount) {
-      for (let i = 0; i < unit.length; i += slotsCount) {
-        const part = unit.slice(i, i + slotsCount);
-        if (!current.length) {
-          batches.push(part);
-        } else {
-          batches.push(current);
-          current = part;
-        }
-      }
-    } else {
-      current = current.concat(unit);
-    }
-  });
-  if (current.length) batches.push(current);
-  return batches.filter(batch => batch.length);
-}
-function currentBatches(){ return createBatchesFromList(active); }
-function clearFeatureState(){
-  clearInterval(featureTimer);
-  cards.forEach(card => card.classList.remove('is-featured'));
-  featureIndex = 0;
-}
-function startFeatureTimer(){
-  clearFeatureState();
-  const visibleCards = cards.filter(card => card.style.visibility !== 'hidden');
-  if (!visibleCards.length) return;
-  function highlightOne(){
-    visibleCards.forEach(card => card.classList.remove('is-featured'));
-    const target = visibleCards[featureIndex % visibleCards.length];
-    if (target) target.classList.add('is-featured');
-    featureIndex = (featureIndex + 1) % visibleCards.length;
-  }
-  highlightOne();
-  if (visibleCards.length > 1) featureTimer = setInterval(highlightOne, 1800);
-}
-function renderBatch(){
-  active = filteredPeople();
-  const batches = currentBatches();
+function renderCards() {
+  const active = filteredPeople();
+  cardsGrid.innerHTML = '';
   emptySearch.classList.toggle('show', !active.length);
-  if (!active.length || !batches.length) {
-    cards.forEach(card => setCard(card, null));
-    statusText.textContent = '0 תוצאות';
-    clearFeatureState();
-    return;
-  }
-  if (batchIndex >= batches.length) batchIndex = 0;
-  const visiblePeople = batches[batchIndex] || [];
-  for (let i=0; i<slotsCount; i++) setCard(cards[i], visiblePeople[i] || null);
-  const flatIndexStart = batches.slice(0, batchIndex).reduce((sum, batch) => sum + batch.length, 0) + 1;
-  const flatIndexEnd = flatIndexStart + visiblePeople.length - 1;
-  statusText.textContent = `${flatIndexStart}-${flatIndexEnd} מתוך ${active.length}`;
-  startFeatureTimer();
+  countStatus.textContent = `${active.length} מתוך ${people.length}`;
+  active.forEach(person => cardsGrid.appendChild(makePersonCard(person)));
 }
-function move(direction, withFade=true){
-  const batches = currentBatches();
-  if (!batches.length) return;
-  if (withFade) cards.forEach(c => c.classList.add('is-fading'));
-  setTimeout(() => {
-    batchIndex += direction;
-    if (batchIndex >= batches.length) batchIndex = 0;
-    if (batchIndex < 0) batchIndex = batches.length - 1;
-    renderBatch();
-    cards.forEach(c => c.classList.remove('is-fading'));
-  }, withFade ? 520 : 0);
-}
-function startPageTimer(){
-  clearInterval(pageTimer);
-  const batches = currentBatches();
-  if (batches.length > 1) pageTimer = setInterval(() => move(1, true), 10500);
-}
-function refresh(){
-  batchIndex = 0;
-  renderBatch();
-  startPageTimer();
-}
-buildCards();
-refresh();
-searchInput.addEventListener('input', refresh);
-prevBtn.addEventListener('click', () => { move(-1, true); startPageTimer(); });
-nextBtn.addEventListener('click', () => { move(1, true); startPageTimer(); });
+searchInput.addEventListener('input', renderCards);
+prevBtn.addEventListener('click', () => window.scrollBy({top: -window.innerHeight*.82, behavior:'smooth'}));
+nextBtn.addEventListener('click', () => window.scrollBy({top: window.innerHeight*.82, behavior:'smooth'}));
+renderCards();
 </script>
 </body>
 </html>
